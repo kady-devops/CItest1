@@ -13,8 +13,10 @@ pipeline {
         }
         stage('Run the tests') {
             steps {
-                env.DOCKER_BUILDKIT=1
-                sh 'docker run -e CI=true kady/docker-react npm run test'
+                scripts{
+                    env.DOCKER_BUILDKIT=1
+                    sh 'docker run -e CI=true kady/docker-react npm run test'
+                }
             }
         } 
     }
